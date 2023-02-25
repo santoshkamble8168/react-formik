@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import React from 'react';
+import { Form, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -12,8 +12,6 @@ const validationSchema = Yup.object({
 })
 
 const Signup = () => {
-    const [showSuccess, setShowSuccess] = useState(false);
-    const [showError, setShowError] = useState(false);
 
     const formik = useFormik({
         initialValues: {
@@ -31,16 +29,6 @@ const Signup = () => {
 
   return (
       <Form onSubmit={formik.handleSubmit}>
-          {showSuccess && (
-              <Alert variant="success" onClose={() => setShowSuccess(false)} dismissible>
-                  You have successfully signed up!
-              </Alert>
-          )}
-          {showError && (
-              <Alert variant="danger" onClose={() => setShowError(false)} dismissible>
-                  There was an error with your sign-up. Please try again.
-              </Alert>
-          )}
           <Form.Group controlId="firstName">
               <Form.Label>First Name</Form.Label>
               <Form.Control
